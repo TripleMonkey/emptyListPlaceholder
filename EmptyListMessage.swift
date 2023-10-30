@@ -6,12 +6,12 @@
 import SwiftUI
 
 /// View Modifier to display message when list contains no items
-struct EmptyListMessage: ViewModifier {
+struct EmptyList: ViewModifier {
     
-    /// number of items in list to be used with a list view
-    let listCount: Int
     /// string message to display when list is empty
     let message: String
+    /// number of items in list to be used with a list view
+    let listCount: Int
     
     @ViewBuilder
     /// Displays list content or text placeholder
@@ -33,12 +33,12 @@ struct EmptyListMessage: ViewModifier {
 extension List {
     /// View extension to add empty list message to list view when list is empty.
     /// - Parameters:
-    ///   - listCount: Int count of current list data to display
     ///   - message: String output that will be shown when list is empty
+    ///   - listCount: Int count of current list data to display
     /// - Returns: Returns list content when list is not empty and Text view message in place of content when list is empty
-    func emptyListMessage(for listCount: Int, message: String) -> some View
+    func emptyList(message: String, listCount: Int) -> some View
     {
-        return modifier(EmptyListMessage(listCount: listCount, message: message))
+        return modifier(EmptyList(message: message, listCount: listCount))
     }
 }
 
